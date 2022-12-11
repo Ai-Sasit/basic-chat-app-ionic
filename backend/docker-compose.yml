@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  server:
+    container_name: server-api
+    build: .
+    ports:
+      - "7000:7000"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: database
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
